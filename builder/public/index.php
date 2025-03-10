@@ -1,7 +1,12 @@
 <?php
-require('../vendor/autoload.php');
+// require('../vendor/autoload.php');
+require_once __DIR__ . '/../vendor/autoload.php';
+use App\MySQLQueryBuilder;
+use App\LiteralBuilder;
+$builder = new MySQLQueryBuilder();
+$sqlQuery = $builder->select(['nom', 'age'])
+    ->from('utilisateurs')
+    ->where('age', '>', '18')
+    ->getQuery();
 
-
-# TODO: Creer un QueryBuilder
-# Ecrire une requête en chainant des methodes
-# Afficher la requête
+echo $sqlQuery;
